@@ -17,9 +17,12 @@ jobs:
       - name: Run Python script
         run: python winner_selection.py
 
-      - name: Read winner from file
-        id: winner
-        run: echo "WINNER=$(cat winner.txt)" >> $GITHUB_ENV
+      - name: Read winner from file and set as environment variable
+        run: |
+          winner=$(cat winner.txt)
+          echo "WINNER=${winner}" >> $GITHUB_ENV
+          echo "DRAW_NAME=${{ github.event.inputs.draw_name }}" >> $GITHUB_ENV
 
-      - name: Print winner
-        run: echo "Winner: ${{ steps.winner.outputs.winner }}"
+      - name: Print winner and draw name
+          run:echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
+          
