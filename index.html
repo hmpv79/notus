@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Result</title>
+</head>
+<body>
+    <h1>Draw Result</h1>
+    <p>Draw Name: <span id="drawName"></span></p>
+    <p>Winner: <span id="winnerName"></span></p>
+
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('drawName').textContent = data.draw_name;
+                document.getElementById('winnerName').textContent = data.winner_name;
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
