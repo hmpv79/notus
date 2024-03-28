@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Run Python script
-        run: python notus_guild_winner_selection.py
+        run: python winner_selection.py
 
       - name: Read winner from file and set as environment variable
         run: |
@@ -24,5 +24,4 @@ jobs:
           echo "DRAW_NAME=${{ github.event.inputs.draw_name }}" >> $GITHUB_ENV
 
       - name: Print winner and draw name
-          run:echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
-          
+        run: echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
