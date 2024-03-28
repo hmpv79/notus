@@ -11,12 +11,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Python script
-        run: python notus_guild_winner_selection.py
+        run: python winner_selection.py
 
       - name: Read winner from file
         id: winner
         run: echo "::set-output name=winner::$(cat winner.txt)"
 
       - name: Print winner
-        run: echo "Winner: ${{ steps.winner.outputs.winner }}"
-      
+        run: echo "Winner:${{ steps.winner.outputs.winner }}"
