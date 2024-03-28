@@ -25,7 +25,7 @@ for participant in participants:
 # Print participants and their weights
 print("Participant and their weights:")
 for participant in participants:
-    print(f"{participant['name']}: {participant['priority']}")
+    print(f"{participant['participant']}: {participant['priority']}")
 
 # Extract the priorities
 priorities = [int(participant["priority"]) for participant in participants]
@@ -33,4 +33,4 @@ priorities = [int(participant["priority"]) for participant in participants]
 # Select a winner based on priorities
 winner = random.choices(participants, weights=priorities, k=1)[0]
 
-print("\nDraw Winner:", winner["name"])
+print("\nDraw Winner:", winner["participant"])
