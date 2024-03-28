@@ -3,7 +3,7 @@ import csv
 from datetime import datetime
 
 # Define the CSV filename
-csv_filename = 'participants.csv'
+csv_filename = 'shards.csv'
 
 # Read participant data from CSV file
 participants = []
