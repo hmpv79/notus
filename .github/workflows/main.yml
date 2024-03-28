@@ -21,7 +21,7 @@ jobs:
         run: |
           winner=$(cat winner.txt)
           draw_name=${{ github.event.inputs.draw_name }}
-          echo "{\"draw_name\": \"$draw_name\", \"winner_name\": \"$winner\"}" > data.json
+          echo "{\"draw_name\": \"$draw_name\", \"winner_name\": \"$winner\"}" > docs/data.json
 
       - name: Print winner and draw name
         run: echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
