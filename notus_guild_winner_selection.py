@@ -37,4 +37,4 @@ print("\nDraw Winner:", winner["participant"])
 
 # Write the winner's name to an environment file
 with open('winner.txt', 'w') as file:
-    file.write(winner["name"])
+    file.write(winner["participant"])
