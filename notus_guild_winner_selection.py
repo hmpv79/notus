@@ -8,19 +8,24 @@ csv_filename = 'shards.csv'
 # Read participant data from CSV file
 participants = []
 with open(csv_filename, newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
+    reader = csv.DictReader(csvfile, delimiter=',')
     for row in reader:
         participants.append(row)
 
 # Calculate the priority for each participant
 for participant in participants:
-    # Convert join date to datetime object
-    join_date = datetime.strptime(participant["join_date"], "%Y-%m-%d")
+    # Convert date to datetime object
+    date = datetime.strptime(participant["join_date"], "%Y-%m-%d")
     # Calculate the number of days since join date
-    days_since_join = (datetime.now() - join_date).days
+    days_since_join = (datetime.now() - date).days
     # Calculate priority based on the number of shards and days since join date
     priority = int(participant["shards"]) * days_since_join
     participant["priority"] = priority
+
+# Print participants and their weights
+print("Participant and their weights:")
+for participant in participants:
+    print(f"{participant['name']}: {participant['priority']}")
 
 # Extract the priorities
 priorities = [int(participant["priority"]) for participant in participants]
@@ -28,4 +33,4 @@ priorities = [int(participant["priority"]) for participant in participants]
 # Select a winner based on priorities
 winner = random.choices(participants, weights=priorities, k=1)[0]
 
-print("Winner:", winner["name"])
+print("\nDraw Winner:", winner["name"])
