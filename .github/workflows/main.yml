@@ -1,7 +1,11 @@
 name: Select Winner
 
 on:
-  workflow_dispatch:  # Triggered manually
+  workflow_dispatch:
+    inputs:
+      draw_name:
+        description: 'Name of the draw'
+        required: true
 
 jobs:
   select_winner:
