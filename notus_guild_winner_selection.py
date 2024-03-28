@@ -36,4 +36,4 @@ winner = random.choices(participants, weights=priorities, k=1)[0]
 print("\nDraw Winner:", winner["participant"])
 
 # Print the winner's name for GitHub Actions output
-print(f"::set-output name=winner::{winner['name']}")
+print(f"::set-output name=winner::{winner['participant']}")
