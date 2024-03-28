@@ -21,11 +21,7 @@ jobs:
         run: |
           winner=$(cat winner.txt)
           draw_name=${{ github.event.inputs.draw_name }}
-          echo "WINNER=${winner}" >> $GITHUB_ENV
-          echo "DRAW_NAME=${draw_name}" >> $GITHUB_ENV
-          echo "Draw: $draw_name, Winner: $winner" > winner_and_draw.txt
-
-      
+          echo "{\"draw_name\": \"$draw_name\", \"winner_name\": \"$winner\"}" > data.json
 
       - name: Print winner and draw name
         run: echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
@@ -33,5 +29,5 @@ jobs:
       - name: Upload winner and draw name as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: winner_and_draw
-          path: winner_and_draw.txt
+          name: draw_result
+          path: data.json
