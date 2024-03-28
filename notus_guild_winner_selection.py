@@ -15,7 +15,7 @@ with open(csv_filename, newline='') as csvfile:
 # Calculate the priority for each participant
 for participant in participants:
     # Convert date to datetime object
-    date = datetime.strptime(participant["date"], "%Y-%m-%d")
+    date = datetime.strptime(participant["join_date"], "%Y-%m-%d")
     # Calculate the number of days since join date
     days_since_join = (datetime.now() - date).days
     # Calculate priority based on the number of shards and days since join date
