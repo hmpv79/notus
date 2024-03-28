@@ -17,17 +17,21 @@ jobs:
       - name: Run Python script
         run: python notus_guild_winner_selection.py
 
-      - name: Read winner from file and set as environment variable
+      - name: Read winner and draw name from file and set as environment variable
         run: |
           winner=$(cat winner.txt)
+          draw_name=${{ github.event.inputs.draw_name }}
           echo "WINNER=${winner}" >> $GITHUB_ENV
-          echo "DRAW_NAME=${{ github.event.inputs.draw_name }}" >> $GITHUB_ENV
+          echo "DRAW_NAME=${draw_name}" >> $GITHUB_ENV
+          echo "Draw: $draw_name, Winner: $winner" > winner_and_draw.txt
+
+      
 
       - name: Print winner and draw name
         run: echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
       
-      - name: Upload winner as artifact
+      - name: Upload winner and draw name as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: winner
-          path: winner.txt
+          name: winner_and_draw
+          path: winner_and_draw.txt
