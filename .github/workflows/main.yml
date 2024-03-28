@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Run Python script
         run: python notus_guild_winner_selection.py
@@ -23,3 +23,6 @@ jobs:
 
       - name: Print winner
         run: echo "Winner:${{ steps.winner.outputs.winner }}"
+
+      - name: Set winner as environment variable
+        run: echo "WINNER=${{ steps.winner.outputs.winner }}" >> $GITHUB_ENV
