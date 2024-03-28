@@ -25,3 +25,9 @@ jobs:
 
       - name: Print winner and draw name
         run: echo "Winner:${{ env.WINNER }} | Draw Name:${{ env.DRAW_NAME }}"
+      
+      - name: Upload winner as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: winner
+          path: winner.txt
