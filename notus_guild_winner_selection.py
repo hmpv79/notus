@@ -35,5 +35,6 @@ winner = random.choices(participants, weights=priorities, k=1)[0]
 
 print("\nDraw Winner:", winner["participant"])
 
-# Print the winner's name for GitHub Actions output
-print(f"::set-output name=winner::{winner['participant']}")
+# Write the winner's name to an environment file
+with open('winner.txt', 'w') as file:
+    file.write(winner["name"])
